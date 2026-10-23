@@ -1,0 +1,10 @@
+.git
+.data
+workspace
+vendor
+node_modules
+.env
+*.log
+tests
+docs
+.github

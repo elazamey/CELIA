@@ -1,0 +1,7 @@
+{
+  "name": "stablyai/orca",
+  "url": "https://github.com/stablyai/orca.git",
+  "revision": "89b3d382847f10b31a731ebd7e18aad022a4b15a",
+  "license": "MIT",
+  "purpose": "Optional desktop and git-worktree orchestration layer for NEW1 agents"
+}

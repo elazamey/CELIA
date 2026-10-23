@@ -1,0 +1,29 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    restart: unless-stopped
+    volumes:
+      - ollama-models:/root/.ollama
+    ports:
+      - "11434:11434"
+
+  new1:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - ollama
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen3:8b}
+      HOST: 0.0.0.0
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - new1-workspace:/app/workspace
+      - new1-data:/app/.data
+
+volumes:
+  ollama-models:
+  new1-workspace:
+  new1-data:

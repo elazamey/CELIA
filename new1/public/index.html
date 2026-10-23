@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10130f" />
+    <meta name="description" content="NEW1 — مساحة وكلاء ذكاء اصطناعي محلية ومجانية بالكامل، تعمل مع Ollama وOrca." />
+    <title>NEW1 — وكيلك المحلي</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <svg class="svg-sprite" aria-hidden="true">
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+      <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21h-4v-.08A1.7 1.7 0 0 0 8.94 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.57 15 1.7 1.7 0 0 0 3 14H3v-4h.08A1.7 1.7 0 0 0 4.6 8.94a1.7 1.7 0 0 0-.34-1.88L4.2 7l2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.57 1.7 1.7 0 0 0 10 3V3h4v.08A1.7 1.7 0 0 0 15.06 4.6a1.7 1.7 0 0 0 1.88-.34L17 4.2 19.83 7l-.06.06a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 21 10h.08v4H21a1.7 1.7 0 0 0-1.6 1Z"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.1 8a7 7 0 0 1 11.4-1L20 12M4 12l2.5 5a7 7 0 0 0 11.4-1"/></symbol>
+      <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+      <symbol id="i-stop" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><rect x="9" y="9" width="6" height="6" rx="1"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    </svg>
+
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="NEW1 الرئيسية">
+          <span class="brand-mark">N<span>1</span></span>
+          <span class="brand-copy"><strong>NEW1</strong><small>LOCAL AGENT OS</small></span>
+        </a>
+
+        <nav class="main-nav" aria-label="التنقل الرئيسي">
+          <button class="nav-item active" type="button" data-view="tasks">
+            <svg><use href="#i-grid" /></svg><span>المهام</span><span class="nav-count" id="nav-task-count">0</span>
+          </button>
+          <button class="nav-item" type="button" data-view="workspace">
+            <svg><use href="#i-folder" /></svg><span>مساحة العمل</span>
+          </button>
+          <button class="nav-item" type="button" data-view="settings">
+            <svg><use href="#i-settings" /></svg><span>الإعداد والتكامل</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-foot">
+          <div class="local-card">
+            <span class="local-icon"><svg><use href="#i-check" /></svg></span>
+            <div><strong>محلي افتراضيًا</strong><p>لا مفاتيح API. لا اشتراك.</p></div>
+          </div>
+          <p class="privacy-note">تبقى المهام والملفات على جهازك ما لم تشاركها بنفسك.</p>
+          <span class="version">NEW1 / v0.1.0</span>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="topbar-kicker">مساحة العمل المحلية</p>
+            <h2 id="view-heading">مركز المهام</h2>
+          </div>
+          <button class="health-pill checking" id="health-pill" type="button" title="فحص اتصال Ollama">
+            <span class="status-dot"></span><span id="health-label">جارٍ فحص النموذج…</span>
+            <svg><use href="#i-refresh" /></svg>
+          </button>
+        </header>
+
+        <div class="provider-banner" id="provider-banner" hidden>
+          <div><strong id="banner-title">Ollama غير متصل</strong><p id="banner-text">شغّل Ollama ثم أعد الفحص.</p></div>
+          <button class="text-button" type="button" data-go-settings>عرض خطوات التشغيل <span>←</span></button>
+        </div>
+
+        <section class="view" id="view-tasks">
+          <div class="welcome-row">
+            <div>
+              <span class="eyebrow"><span></span> وكيل ينفّذ، لا يكتفي بالاقتراح</span>
+              <h1>ماذا ننجز اليوم؟</h1>
+              <p>اطلب بحثًا في ملفاتك، أو بناء مشروع، أو مراجعة كود — باستخدام نموذج يعمل على جهازك.</p>
+            </div>
+            <span class="sse-state" id="sse-state"><span></span> متصل بالتحديثات الحية</span>
+          </div>
+
+          <form class="composer" id="task-form">
+            <label class="sr-only" for="prompt">وصف المهمة</label>
+            <textarea id="prompt" rows="4" maxlength="12000" placeholder="مثال: أنشئ موقعًا بسيطًا لعرض أعمالي، ثم راجع الملفات واشرح لي طريقة تشغيله…" required></textarea>
+            <div class="composer-controls">
+              <div class="mode-switch" aria-label="طريقة التنفيذ">
+                <button type="button" class="selected" data-mode="agent" aria-pressed="true">وكيل واحد</button>
+                <button type="button" data-mode="team" aria-pressed="false">فريق <span>3 أدوار</span></button>
+              </div>
+              <div class="control-group">
+                <label class="model-select"><span class="sr-only">النموذج المحلي</span><select id="model-select"><option value="qwen3:8b">qwen3:8b</option></select></label>
+                <button class="run-button" id="run-button" type="submit"><span>ابدأ التنفيذ</span><svg><use href="#i-arrow" /></svg></button>
+              </div>
+            </div>
+            <div class="composer-foot">
+              <label class="command-toggle" title="قد تشغل اختبارات المشروع كودًا من package.json؛ فعّلها فقط لمساحة عمل موثوقة">
+                <input type="checkbox" id="allow-commands" /><span class="toggle-track"></span>
+                السماح بتشغيل اختبارات المشروع <code>npm test</code>
+              </label>
+              <span id="prompt-count">0 / 12000</span>
+            </div>
+          </form>
+
+          <div class="stats-grid" aria-label="إحصاءات المهام">
+            <article><span class="stat-label">قيد التنفيذ</span><strong id="stat-active">0</strong><small>مهام نشطة الآن</small></article>
+            <article><span class="stat-label">مكتملة</span><strong id="stat-completed">0</strong><small>نتائج محفوظة محليًا</small></article>
+            <article class="cost-stat"><span class="stat-label">تكلفة API</span><strong>$0</strong><small>استدلال محلي بلا اشتراك</small></article>
+          </div>
+
+          <div class="task-grid">
+            <section class="panel task-list-panel">
+              <div class="panel-heading"><div><span class="section-kicker">سجل العمل</span><h3>المهام الأخيرة</h3></div><span class="count-badge" id="task-count">0</span></div>
+              <div class="task-list" id="task-list"></div>
+            </section>
+
+            <section class="panel task-detail-panel">
+              <div class="empty-state" id="detail-empty">
+                <div class="empty-orbit"><span></span><span></span><strong>N1</strong></div>
+                <h3>اختر مهمة لعرض تفاصيلها</h3>
+                <p>ستظهر هنا خطة العمل، استدعاءات الأدوات، والنتيجة النهائية خطوة بخطوة.</p>
+              </div>
+              <div id="detail-content" hidden>
+                <div class="detail-header">
+                  <div><div id="detail-status"></div><h3 id="detail-title"></h3></div>
+                  <button class="icon-button danger" id="cancel-task" type="button" title="إلغاء المهمة" hidden><svg><use href="#i-stop" /></svg></button>
+                </div>
+                <p class="detail-prompt" id="detail-prompt"></p>
+                <div class="result-box" id="result-wrap" hidden><div class="result-heading"><strong>النتيجة النهائية</strong><button class="icon-button" id="copy-result" type="button" title="نسخ النتيجة"><svg><use href="#i-copy" /></svg></button></div><div id="detail-result"></div></div>
+                <div class="error-box" id="detail-error" hidden></div>
+                <div class="activity-heading"><strong>سجل التنفيذ</strong><span id="activity-count"></span></div>
+                <div class="activity-list" id="activity-list"></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="view-workspace" hidden>
+          <div class="section-title-row"><div><span class="eyebrow"><span></span> جذر معزول وآمن</span><h1>مساحة العمل</h1><p>هذه هي الملفات الوحيدة التي يستطيع الوكيل قراءتها أو تعديلها.</p></div><button class="secondary-button" id="refresh-files" type="button"><svg><use href="#i-refresh" /></svg> تحديث الملفات</button></div>
+          <div class="workspace-notice"><strong>حدود واضحة:</strong> مسارات <code>.git</code> و<code>.env</code> والروابط الرمزية محمية. لا يمكن للوكيل الكتابة خارج هذا المجلد.</div>
+          <div class="file-layout">
+            <section class="panel"><div class="panel-heading"><div><span class="section-kicker">WORKSPACE</span><h3>الملفات</h3></div><span class="count-badge" id="file-count">0</span></div><div class="file-list" id="file-list"></div></section>
+            <section class="panel file-preview"><div class="panel-heading"><div><span class="section-kicker">READ ONLY</span><h3 id="preview-name">معاينة الملف</h3></div></div><pre id="file-preview-content">اختر ملفًا نصيًا لعرض محتواه هنا.</pre></section>
+          </div>
+        </section>
+
+        <section class="view" id="view-settings" hidden>
+          <div class="section-title-row"><div><span class="eyebrow"><span></span> بلا حسابات أو مفاتيح</span><h1>الإعداد والتكامل</h1><p>كل ما تحتاجه لتشغيل NEW1 وتطويره على جهازك.</p></div></div>
+          <div class="settings-grid">
+            <section class="panel settings-card provider-card"><span class="card-number">01</span><h3>شغّل النموذج المحلي</h3><p>ثبّت Ollama، ثم نزّل النموذج وشغّل الخدمة. يمكنك اختيار أي نموذج آخر مثبت لديك.</p><div class="code-block"><code id="setup-command">ollama pull qwen3:8b
+ollama serve</code><button class="icon-button copy-button" type="button" data-copy-target="setup-command" title="نسخ الأوامر"><svg><use href="#i-copy" /></svg></button></div><div class="setting-status" id="provider-detail">جارٍ قراءة حالة المزود…</div></section>
+            <section class="panel settings-card"><span class="card-number">02</span><h3>اربط Orca</h3><p>يجلب هذا الأمر المصدر MIT الرسمي إلى <code>vendor/orca</code> بإصدار مثبت، لتستخدم تنسيق Worktrees وتطبيق سطح المكتب.</p><div class="code-block"><code id="orca-command">npm run orca:init</code><button class="icon-button copy-button" type="button" data-copy-target="orca-command" title="نسخ الأمر"><svg><use href="#i-copy" /></svg></button></div><div class="setting-status" id="orca-detail">جارٍ فحص مصدر Orca…</div></section>
+            <section class="panel settings-card"><span class="card-number">03</span><h3>اختبر قبل التطوير</h3><p>النواة بلا اعتماديات npm خارجية. اختبارات الأدوات والتخزين والخادم تعمل مباشرة على Node.js 22+.</p><div class="code-block"><code id="test-command">npm run validate</code><button class="icon-button copy-button" type="button" data-copy-target="test-command" title="نسخ الأمر"><svg><use href="#i-copy" /></svg></button></div><div class="setting-status neutral">ملفاتك ومهامك لا تغادر الجهاز عبر NEW1.</div></section>
+            <section class="panel settings-card honesty-card"><span class="card-number">04</span><h3>ماذا يعني «مجاني»؟</h3><p>لا رسوم ترخيص أو اشتراكات أو واجهات API مدفوعة في هذا المسار. تحتاج فقط جهازًا قادرًا على تشغيل النموذج، وتحتمل تكلفة الكهرباء والعتاد.</p><p>الجودة تعتمد على النموذج والعتاد؛ NEW1 أساس قابل للتطوير وليس ادعاءً باجتياز Claude أو Manus في كل المهام.</p></section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" hidden></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
