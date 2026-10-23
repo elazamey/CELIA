@@ -1,0 +1,1 @@
+اقرأ `AGENTS.md` و`config/celia-ecosystem.json`، ثم اعمل داخل هذا الـ Worktree المعزول لتنفيذ التذكرة المطلوبة لمنظومة CELIA مع التحقق الفعلي عبر `npm test` و`npm run validate` قبل فتح الـ Pull Request.

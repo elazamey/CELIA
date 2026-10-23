@@ -1,0 +1,31 @@
+name: CELIA × Orca CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  validate-and-test:
+    name: Validate Orca Integration & Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository (without fetching 1.6GB submodule history)
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run CELIA × Orca Doctor
+        run: bash scripts/celia-doctor.sh
+
+      - name: Validate orca.yaml, .gitmodules, and Orca Plugin Schema
+        run: npm run validate
+
+      - name: Run Automated Integration Tests
+        run: npm test

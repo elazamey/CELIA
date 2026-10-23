@@ -1,0 +1,53 @@
+{
+  "manifestVersion": 1,
+  "id": "celia-ops",
+  "publisher": "elazamey",
+  "name": "CELIA Fashion & AI Operations",
+  "version": "1.0.0",
+  "description": "لوحة تحكم وأوامر تشغيل لمنظومة CELIA للأزياء الذكية والمساعد الذكي داخل Orca (CELIA Studio panel, worktree telemetry, and terminal presets).",
+  "author": {
+    "name": "elazamey",
+    "url": "https://github.com/elazamey/CELIA"
+  },
+  "repository": "https://github.com/elazamey/CELIA.git",
+  "engines": {
+    "orca": ">=1.4.0"
+  },
+  "pluginApi": 1,
+  "main": "main.mjs",
+  "contributes": {
+    "panels": [
+      {
+        "id": "celia-studio",
+        "title": "CELIA Studio",
+        "icon": "sparkles",
+        "entry": "panel.html"
+      }
+    ],
+    "commands": [
+      {
+        "id": "celia.workspace-summary",
+        "title": "CELIA: ملخص نشاط المسارات والوكلاء",
+        "context": "worktree"
+      },
+      {
+        "id": "celia.reset-metrics",
+        "title": "CELIA: تصفير إحصاءات الجلسة",
+        "context": "global"
+      }
+    ],
+    "events": [
+      { "on": "worktree.created" },
+      { "on": "worktree.removed" },
+      { "on": "agent.status.changed" }
+    ]
+  },
+  "capabilities": [
+    { "kind": "workspace:read" },
+    { "kind": "terminal:send" },
+    { "kind": "notifications:show" },
+    { "kind": "storage" },
+    { "kind": "events:subscribe" },
+    { "kind": "settings:own" }
+  ]
+}

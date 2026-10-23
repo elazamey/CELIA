@@ -1,0 +1,17 @@
+# Shared Orca worktree directories
+.cache/
+.workspaces/
+
+# Environment & secrets (copied to new worktrees via .worktreeinclude)
+.env
+.env.local
+.env.*.local
+
+# Dependencies & runtime artifacts
+node_modules/
+dist/
+out/
+build/
+coverage/
+*.log
+.DS_Store

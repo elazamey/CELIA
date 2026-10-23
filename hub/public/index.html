@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CELIA × Orca — مركز قيادة منظومة سيليا للأزياء الذكية</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <div class="eyebrow-row">
+            <span class="pill gold">CELIA FASHION WEAR</span>
+            <span class="pill subtle">Powered by stablyai/orca</span>
+            <span class="pill status-pill" id="health-pill">جارٍ التحقق...</span>
+          </div>
+          <h1>مركز قيادة وتنسيق منظومة <span class="gold-text">CELIA × Orca</span></h1>
+          <p class="subtitle" id="tagline">
+            توظيف متكامل لمنصة Orca لتشغيل أسطول من الوكلاء المتوازيين عبر مسارات Git Worktrees
+            لتطوير متجر سيليا، العرض ثلاثي الأبعاد، ومستشار الأزياء الذكي.
+          </p>
+          <div class="hero-stats" id="hero-stats"></div>
+        </div>
+        <div class="hero-card">
+          <h3>التكامل النشط في المستودع</h3>
+          <ul class="check-list" id="integration-checks">
+            <li>جارٍ قراءة حالة المستودع...</li>
+          </ul>
+          <div class="quick-cmd-box">
+            <span class="quick-label">جلب مصدر Orca محلياً عند الحاجة:</span>
+            <code id="init-cmd">bash scripts/orca-sync.sh init</code>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container main-stack">
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">01 — ECOSYSTEM ARCHITECTURE</span>
+            <h2>ركائز منظومة CELIA التي يديرها Orca</h2>
+          </div>
+          <p class="section-note">
+            يجمع هذا المستودع المركزي بين مشاريع CELIA ويوحّد تهيئة الوكلاء عبر <code>orca.yaml</code> و<code>.worktreeinclude</code>.
+          </p>
+        </div>
+        <div class="services-grid" id="services-grid"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">02 — PARALLEL WORKTREE PLANNER</span>
+            <h2>مخطط أسطول الوكلاء المتوازي (Orca Fan-Out)</h2>
+          </div>
+          <p class="section-note">
+            اختر مسار عمل جاهزاً لمنظومة الأزياء أو اكتب هدفك الخاص لتوليد فروع <code>git worktree</code> وأوامر الوكلاء فوراً.
+          </p>
+        </div>
+
+        <div class="planner-controls">
+          <div class="workflow-tabs" id="workflow-tabs"></div>
+          <form class="custom-plan-form" id="custom-plan-form">
+            <input
+              type="text"
+              id="custom-goal-input"
+              placeholder="مثال: إضافة قسم فساتين سهرة ثلاثي الأبعاد مع ترشيح المقاس عبر المساعد الذكي..."
+              required
+            />
+            <button type="submit" class="btn-gold">توليد خطة وكلاء مخصصة</button>
+          </form>
+        </div>
+
+        <div class="plan-header" id="plan-header"></div>
+        <div class="steps-grid" id="steps-grid"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">03 — NATIVE ORCA PLUGIN SANDBOX</span>
+            <h2>معاينة حية لإضافة <code>elazamey.celia-ops</code> داخل Orca</h2>
+          </div>
+          <p class="section-note">
+            الإضافة الموجودة في <code>plugins/celia-ops/</code> تعمل فعلياً هنا عبر جسر رسائل Orca الرسمي (<code>orca-panel-action</code>).
+          </p>
+        </div>
+
+        <div class="plugin-workbench">
+          <div class="plugin-frame-wrap">
+            <div class="frame-topbar">
+              <span>Orca Right Sidebar — CELIA Studio Panel</span>
+              <code>plugins/celia-ops/panel.html</code>
+            </div>
+            <iframe
+              id="plugin-iframe"
+              src="./plugin-preview/panel.html"
+              title="CELIA Studio Orca Plugin Preview"
+            ></iframe>
+          </div>
+
+          <div class="terminal-simulator">
+            <div class="frame-topbar">
+              <span>محاكي طرفية وإشعارات Orca (Host Bridge Monitor)</span>
+              <button type="button" id="clear-terminal" class="btn-mini">مسح السجل</button>
+            </div>
+            <pre class="terminal-log" id="terminal-log"></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">04 — SCHEDULED ORCA AUTOMATIONS</span>
+            <h2>الأتمتة الدورية الجاهزة بتوقيت القاهرة (<code>Africa/Cairo</code>)</h2>
+          </div>
+          <p class="section-note">
+            أوامر جاهزة للنسخ لتشغيل مراجعات دورية آلية للمتجر والمساعد الذكي عبر <code>orca automations</code>.
+          </p>
+        </div>
+        <div class="automations-grid" id="automations-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>CELIA Fashion Wear × stablyai/orca Integration</span>
+        <span dir="ltr">elazamey/CELIA • MIT Orca Submodule</span>
+      </div>
+    </footer>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
