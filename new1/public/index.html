@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10130f" />
+    <meta name="description" content="NEW1 — مساحة وكلاء ذكاء اصطناعي محلية ومجانية بالكامل، تعمل مع Ollama وllama.cpp وOrca." />
+    <title>NEW1 — وكيلك المحلي</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <svg class="svg-sprite" aria-hidden="true">
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+      <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21h-4v-.08A1.7 1.7 0 0 0 8.94 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.57 15 1.7 1.7 0 0 0 3 14H3v-4h.08A1.7 1.7 0 0 0 4.6 8.94a1.7 1.7 0 0 0-.34-1.88L4.2 7l2.83-2.83.06.06A1.7 1.7 0 0 0 9 4.57 1.7 1.7 0 0 0 10 3V3h4v.08A1.7 1.7 0 0 0 15.06 4.6a1.7 1.7 0 0 0 1.88-.34L17 4.2 19.83 7l-.06.06a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 21 10h.08v4H21a1.7 1.7 0 0 0-1.6 1Z"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.1 8a7 7 0 0 1 11.4-1L20 12M4 12l2.5 5a7 7 0 0 0 11.4-1"/></symbol>
+      <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+      <symbol id="i-stop" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><rect x="9" y="9" width="6" height="6" rx="1"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V3m0 0-4 4m4-4 4 4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    </svg>
+
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="NEW1 الرئيسية">
+          <span class="brand-mark">N<span>1</span></span>
+          <span class="brand-copy"><strong>NEW1</strong><small>LOCAL AGENT OS</small></span>
+        </a>
+
+        <nav class="main-nav" aria-label="التنقل الرئيسي">
+          <button class="nav-item active" type="button" data-view="tasks">
+            <svg><use href="#i-grid" /></svg><span>المهام</span><span class="nav-count" id="nav-task-count">0</span>
+          </button>
+          <button class="nav-item" type="button" data-view="workspace">
+            <svg><use href="#i-folder" /></svg><span>مساحة العمل</span><span class="nav-count" id="nav-file-count">0</span>
+          </button>
+          <button class="nav-item" type="button" data-view="settings">
+            <svg><use href="#i-settings" /></svg><span>الإعداد والنشر</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-foot">
+          <div class="local-card">
+            <span class="local-icon"><svg><use href="#i-check" /></svg></span>
+            <div><strong>محلي افتراضيًا</strong><p>لا مفاتيح API. لا اشتراك.</p></div>
+          </div>
+          <p class="privacy-note">تبقى المهام والملفات على جهازك ما لم تشاركها بنفسك.</p>
+          <span class="version">NEW1 / v0.2.0</span>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="topbar-kicker">مساحة العمل المحلية · Orca + Ollama / llama.cpp</p>
+            <h2 id="view-heading">مركز المهام</h2>
+          </div>
+          <div class="topbar-actions">
+            <button class="secondary-button subtle" type="button" data-go-settings title="نشر المستودع المستقل elazamey/new1">
+              <span>نشر GitHub</span>
+            </button>
+            <button class="health-pill checking" id="health-pill" type="button" title="فحص اتصال النموذج المحلي">
+              <span class="status-dot"></span><span id="health-label">جارٍ فحص النموذج…</span>
+              <svg><use href="#i-refresh" /></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="provider-banner" id="provider-banner" hidden>
+          <div><strong id="banner-title">Ollama غير متصل</strong><p id="banner-text">شغّل Ollama أو المحرك المدمج ثم أعد الفحص.</p></div>
+          <button class="text-button" type="button" data-go-settings>عرض خطوات التشغيل <span>←</span></button>
+        </div>
+
+        <section class="view" id="view-tasks">
+          <div class="welcome-row">
+            <div>
+              <span class="eyebrow"><span></span> وكيل ينفّذ على ملفات حقيقية، بلا مفاتيح API</span>
+              <h1>ماذا ننجز اليوم؟</h1>
+              <p>بث حي للـ tokens، أدوات قراءة وتعديل وبحث معزولة، موافقة بشرية اختيارية، واستئناف السياق.</p>
+            </div>
+            <span class="sse-state" id="sse-state"><span></span> متصل بالتحديثات الحية</span>
+          </div>
+
+          <div class="starter-row" aria-label="أمثلة سريعة للتجربة الفورية">
+            <button type="button" class="starter-chip" data-starter="أنشئ ملف notes.md يحتوي على خطة مشروع مختصرة من 4 نقاط باللغة العربية." data-starter-mode="agent" data-starter-approve="false">إنشاء خطة في notes.md</button>
+            <button type="button" class="starter-chip" data-starter="أنشئ ملف hello.html لصفحة ترحيب عربية بسيطة ثم لخّص ما كتبته." data-starter-mode="team" data-starter-approve="false">تجربة وضع الفريق (3 أدوار)</button>
+            <button type="button" class="starter-chip" data-starter="أنشئ ملف config.json يحتوي على إعدادات تطبيق محلي." data-starter-mode="agent" data-starter-approve="true">تجربة الموافقة البشرية قبل الكتابة</button>
+            <button type="button" class="starter-chip" data-starter="استعرض الملفات الموجودة في مساحة العمل وأعطني تقريرًا موجزًا عنها." data-starter-mode="agent" data-starter-approve="false">فحص ملفات مساحة العمل</button>
+          </div>
+
+          <form class="composer" id="task-form">
+            <label class="sr-only" for="prompt">وصف المهمة</label>
+            <textarea id="prompt" rows="4" maxlength="12000" placeholder="مثال: أنشئ ملف README.md يشرح فكرة المشروع، أو عدّل ملفًا موجودًا وراجع النتيجة…" required></textarea>
+            <div class="composer-controls">
+              <div class="mode-switch" aria-label="طريقة التنفيذ">
+                <button type="button" class="selected" data-mode="agent" aria-pressed="true">وكيل واحد</button>
+                <button type="button" data-mode="team" aria-pressed="false">فريق <span>3 أدوار</span></button>
+              </div>
+              <div class="control-group">
+                <label class="model-select"><span class="sr-only">النموذج المحلي</span><select id="model-select"><option value="qwen2.5:0.5b-instruct">qwen2.5:0.5b-instruct</option></select></label>
+                <button class="run-button" id="run-button" type="submit"><span>ابدأ التنفيذ</span><svg><use href="#i-arrow" /></svg></button>
+              </div>
+            </div>
+            <div class="composer-foot">
+              <div class="toggles-group">
+                <label class="command-toggle" title="يطلب موافقتك مع معاينة التغيير قبل أي كتابة أو حذف على القرص">
+                  <input type="checkbox" id="approve-writes" /><span class="toggle-track"></span>
+                  موافقة بشرية قبل التعديل
+                </label>
+                <label class="command-toggle" title="قد تشغل اختبارات المشروع كودًا من package.json؛ فعّلها فقط لمساحة عمل موثوقة">
+                  <input type="checkbox" id="allow-commands" /><span class="toggle-track"></span>
+                  السماح بتشغيل <code>npm test</code>
+                </label>
+              </div>
+              <span id="prompt-count">0 / 12000</span>
+            </div>
+          </form>
+
+          <div class="stats-grid" aria-label="إحصاءات المهام">
+            <article><span class="stat-label">قيد التنفيذ</span><strong id="stat-active">0</strong><small>مهام نشطة أو بانتظار موافقة</small></article>
+            <article><span class="stat-label">مكتملة</span><strong id="stat-completed">0</strong><small>نتائج محفوظة محليًا</small></article>
+            <article class="cost-stat"><span class="stat-label">تكلفة API</span><strong>$0</strong><small>استدلال محلي بلا اشتراك</small></article>
+          </div>
+
+          <div class="task-grid">
+            <section class="panel task-list-panel">
+              <div class="panel-heading">
+                <div><span class="section-kicker">سجل العمل</span><h3>المهام المحفوظة</h3></div>
+                <div class="heading-actions">
+                  <button class="icon-button" id="export-tasks" type="button" title="تصدير المهام كملف JSON"><svg><use href="#i-download" /></svg></button>
+                  <label class="icon-button file-upload-btn" title="استيراد مهام من ملف JSON">
+                    <svg><use href="#i-upload" /></svg>
+                    <input type="file" id="import-tasks-input" accept="application/json" hidden />
+                  </label>
+                  <button class="icon-button danger" id="clear-finished" type="button" title="مسح المهام المنتهية من الذاكرة"><svg><use href="#i-trash" /></svg></button>
+                  <span class="count-badge" id="task-count">0</span>
+                </div>
+              </div>
+              <div class="task-list" id="task-list"></div>
+            </section>
+
+            <section class="panel task-detail-panel">
+              <div class="empty-state" id="detail-empty">
+                <div class="empty-orbit"><span></span><span></span><strong>N1</strong></div>
+                <h3>اختر مهمة أو ابدأ مهمة جديدة</h3>
+                <p>سيظهر هنا البث الحي للـ tokens، طلبات الموافقة البشرية، استدعاءات الأدوات، والنتيجة النهائية.</p>
+              </div>
+              <div id="detail-content" hidden>
+                <div class="detail-header">
+                  <div><div id="detail-status"></div><h3 id="detail-title"></h3></div>
+                  <div class="detail-actions">
+                    <button class="secondary-button compact" id="resume-task" type="button" title="استئناف من آخر نقطة حفظ" hidden><svg><use href="#i-refresh" /></svg> استئناف</button>
+                    <button class="icon-button danger" id="cancel-task" type="button" title="إلغاء المهمة الجارية" hidden><svg><use href="#i-stop" /></svg></button>
+                    <button class="icon-button danger" id="delete-task" type="button" title="حذف هذه المهمة نهائيًا"><svg><use href="#i-trash" /></svg></button>
+                  </div>
+                </div>
+                <p class="detail-prompt" id="detail-prompt"></p>
+
+                <div class="approval-box" id="approval-box" hidden>
+                  <div class="approval-header">
+                    <strong id="approval-title">موافقة مطلوبة قبل التنفيذ</strong>
+                    <span class="status-badge awaiting_approval">بانتظار قرارك</span>
+                  </div>
+                  <pre class="approval-preview" id="approval-preview"></pre>
+                  <div class="approval-buttons">
+                    <button class="run-button" id="approve-yes" type="button">موافقة ومتابعة التنفيذ</button>
+                    <button class="secondary-button danger-border" id="approve-no" type="button">رفض هذه العملية</button>
+                  </div>
+                </div>
+
+                <div class="stream-box" id="stream-wrap" hidden>
+                  <div class="stream-heading"><span class="stream-dot"></span><strong id="stream-role">بث حي من النموذج المحلي…</strong></div>
+                  <div id="stream-content"></div>
+                </div>
+
+                <div class="result-box" id="result-wrap" hidden><div class="result-heading"><strong>النتيجة النهائية</strong><button class="icon-button" id="copy-result" type="button" title="نسخ النتيجة"><svg><use href="#i-copy" /></svg></button></div><div id="detail-result"></div></div>
+                <div class="error-box" id="detail-error" hidden></div>
+                <div class="activity-heading"><strong>سجل التنفيذ التفصيلي</strong><span id="activity-count"></span></div>
+                <div class="activity-list" id="activity-list"></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="view-workspace" hidden>
+          <div class="section-title-row">
+            <div><span class="eyebrow"><span></span> جذر معزول وآمن</span><h1>مساحة العمل</h1><p>هذه هي الملفات الوحيدة التي يستطيع الوكيل قراءتها أو تعديلها (7 أدوات محمية).</p></div>
+            <div class="heading-actions">
+              <button class="secondary-button" id="new-file-btn" type="button"><svg><use href="#i-plus" /></svg> ملف جديد</button>
+              <button class="secondary-button" id="refresh-files" type="button"><svg><use href="#i-refresh" /></svg> تحديث</button>
+            </div>
+          </div>
+          <div class="workspace-notice"><strong>حدود واضحة:</strong> مسارات <code>.git</code> و<code>.env</code> والروابط الرمزية محمية تمامًا. لا يمكن للوكيل الخروج من هذا المجلد.</div>
+
+          <form class="panel file-editor-card" id="new-file-form" hidden>
+            <div class="editor-row">
+              <input type="text" id="new-file-path" placeholder="مسار نسبي مثل: src/hello.js أو docs/plan.md" required />
+              <div class="heading-actions">
+                <button class="run-button" type="submit">حفظ الملف</button>
+                <button class="secondary-button" type="button" id="cancel-file-btn">إلغاء</button>
+              </div>
+            </div>
+            <textarea id="new-file-content" rows="6" placeholder="محتوى الملف النصي…"></textarea>
+          </form>
+
+          <div class="file-layout">
+            <section class="panel"><div class="panel-heading"><div><span class="section-kicker">WORKSPACE</span><h3>الملفات</h3></div><span class="count-badge" id="file-count">0</span></div><div class="file-list" id="file-list"></div></section>
+            <section class="panel file-preview">
+              <div class="panel-heading">
+                <div><span class="section-kicker">INSPECTOR</span><h3 id="preview-name">معاينة الملف</h3></div>
+                <div class="heading-actions" id="preview-actions" hidden>
+                  <button class="icon-button" id="download-file-btn" type="button" title="تنزيل الملف"><svg><use href="#i-download" /></svg></button>
+                  <button class="icon-button danger" id="delete-file-btn" type="button" title="حذف الملف"><svg><use href="#i-trash" /></svg></button>
+                </div>
+              </div>
+              <pre id="file-preview-content">اختر ملفًا نصيًا لعرض محتواه هنا.</pre>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="view-settings" hidden>
+          <div class="section-title-row"><div><span class="eyebrow"><span></span> بلا حسابات مدفوعة أو مفاتيح API</span><h1>الإعداد والتكامل والنشر</h1><p>إدارة النموذج المحلي، تكامل Orca، والنشر المستقل المباشر إلى <code>elazamey/new1</code>.</p></div></div>
+
+          <section class="panel settings-card publish-hero-card">
+            <span class="card-number">GITHUB STANDALONE PUBLISHER · elazamey/new1</span>
+            <h3>نشر المشروع كمستودع مستقل في <code>github.com/elazamey/new1</code></h3>
+            <p>يرفض تكامل GitHub إنشاء مستودع جديد عبر API الحساب (<code>403</code>)، لكنه يملك صلاحية الدفع الفوري فور إنشاء مستودع فارغ باسم <code>new1</code>. أنشئ المستودع الفارغ بنقرة واحدة ثم اضغط <strong>انشر الآن</strong> هنا مباشرة دون سطر أوامر.</p>
+            <div class="publish-actions">
+              <a class="secondary-button accent-border" id="github-create-link" href="https://github.com/new?name=new1&description=NEW1+%E2%80%94+Local-First+AI+Agent+Workspace+(Ollama+%2B+Orca)" target="_blank" rel="noopener noreferrer">
+                1) فتح صفحة إنشاء مستودع <code>new1</code> الفارغ على GitHub ↗
+              </a>
+              <button class="run-button" id="publish-now-btn" type="button">
+                <span>2) تحقق وانشر إلى elazamey/new1 الآن</span>
+              </button>
+              <button class="secondary-button" id="publish-dryrun-btn" type="button">
+                فحص الحزمة المستقلة محليًا
+              </button>
+            </div>
+            <div class="code-block"><code id="publish-command">cd new1 && npm run publish:repo</code><button class="icon-button copy-button" type="button" data-copy-target="publish-command" title="نسخ الأمر"><svg><use href="#i-copy" /></svg></button></div>
+            <div class="setting-status neutral" id="publish-status">جاهز للفحص والنشر الفوري فور توفر المستودع الفارغ.</div>
+          </section>
+
+          <div class="settings-grid">
+            <section class="panel settings-card provider-card"><span class="card-number">01</span><h3>النموذج المحلي (Ollama أو المحرك المدمج)</h3><p>يعمل الآن محرك GGUF CPU المدمج (<code>qwen2.5:0.5b-instruct</code> بترخيص Apache-2.0) تلقائيًا، ويمكنك على جهازك تشغيل نماذج أكبر مثل <code>qwen3:8b</code> عبر Ollama الرسمي.</p><div class="code-block"><code id="setup-command">ollama pull qwen3:8b
+ollama serve</code><button class="icon-button copy-button" type="button" data-copy-target="setup-command" title="نسخ الأوامر"><svg><use href="#i-copy" /></svg></button></div><div class="setting-status" id="provider-detail">جارٍ قراءة حالة المزود…</div></section>
+            <section class="panel settings-card"><span class="card-number">02</span><h3>اربط منصة Orca</h3><p>يتعرف الخادم تلقائيًا على وحدة <code>orca</code> الفرعية في CELIA أو يجلب المصدر الرسمي المثبت إلى <code>vendor/orca</code> لتشغيل مسارات Worktrees متوازية.</p><div class="code-block"><code id="orca-command">npm run orca:init</code><button class="icon-button copy-button" type="button" data-copy-target="orca-command" title="نسخ الأمر"><svg><use href="#i-copy" /></svg></button></div><div class="setting-status" id="orca-detail">جارٍ فحص مصدر Orca…</div></section>
+            <section class="panel settings-card"><span class="card-number">03</span><h3>اختبر قبل التطوير</h3><p>نواة NEW1 بلا اعتماديات npm خارجية؛ تشمل الاختبارات عزل المسارات، الموافقات البشرية، استئناف السياق، وبث SSE.</p><div class="code-block"><code id="test-command">npm run validate</code><button class="icon-button copy-button" type="button" data-copy-target="test-command" title="نسخ الأمر"><svg><use href="#i-copy" /></svg></button></div><div class="setting-status neutral">ملفاتك ومهامك لا تغادر الجهاز عبر NEW1.</div></section>
+            <section class="panel settings-card honesty-card"><span class="card-number">04</span><h3>الشفافية الهندسية: ماذا يعني «مجاني»؟</h3><p>الكود مفتوح المصدر بترخيص MIT ولا يتطلب اشتراكًا أو مفتاح API. المحرك المدمج يستخدم <code>Qwen2.5-0.5B-Instruct</code> (مناسب للمهام السريعة والتجربة الفورية).</p><p>للمشاريع البرمجية المعقدة، شغّل نموذجًا بحجم 8B–32B عبر Ollama على جهازك؛ جودة المخرجات تعتمد على حجم النموذج والعتاد.</p></section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" hidden></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

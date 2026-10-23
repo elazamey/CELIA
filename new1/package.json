@@ -1,0 +1,24 @@
+{
+  "name": "new1-local-agent",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Free, local-first AI agent workspace powered by Ollama / llama.cpp and designed to work alongside Orca",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "dev": "node --watch src/server.mjs",
+    "setup": "node scripts/setup.mjs",
+    "model:setup": "node scripts/local-ollama-engine.mjs --setup-only",
+    "model:serve": "node scripts/local-ollama-engine.mjs",
+    "orca:init": "node scripts/orca-sync.mjs",
+    "publish:check": "node scripts/publish-standalone.mjs --dry-run",
+    "publish:repo": "node scripts/publish-standalone.mjs",
+    "check": "node --check src/server.mjs && node --check src/agent.mjs && node --check src/tools.mjs && node --check src/provider.mjs && node --check src/store.mjs && node --check src/task-manager.mjs && node --check scripts/local-ollama-engine.mjs && node --check scripts/publish-standalone.mjs && node --check public/app.js",
+    "test": "node --test tests/*.test.mjs",
+    "validate": "npm run check && npm test"
+  }
+}

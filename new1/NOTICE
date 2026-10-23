@@ -1,0 +1,10 @@
+NEW1 is an independent local-first agent workspace.
+
+Optional upstream component:
+- Orca — https://github.com/stablyai/orca
+- Copyright and license: see the upstream Orca LICENSE file.
+- Orca is distributed under the MIT License and is fetched separately by
+  `npm run orca:init`; it is not relicensed as part of NEW1.
+
+Ollama and model weights are separate projects with their own licenses.
+Check the license and usage terms of every model you choose to download.
