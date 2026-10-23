@@ -1,0 +1,30 @@
+# CELIA × Orca Workspace Configuration
+# Validated against stablyai/orca src/shared/orca-yaml.ts
+
+scripts:
+  setup: |
+    bash scripts/celia-worktree-setup.sh
+  archive: |
+    bash scripts/celia-worktree-archive.sh
+
+setupAgentStartupPolicy: wait-for-setup
+
+issueCommand: |
+  اقرأ AGENTS.md وملف config/celia-ecosystem.json أولاً، ثم نفّذ المهمة المرتبطة وفق دورة التحقق: فحص -> تخطيط -> تنفيذ -> اختبار (npm test) -> توثيق النتيجة، مع الحفاظ على دعم العربية RTL وهوية CELIA للأزياء.
+
+defaultTabs:
+  - title: Agent
+  - title: CELIA Hub
+    color: "#D4AF37"
+    command: npm run hub
+  - title: CELIA Doctor
+    color: "#10B981"
+    command: bash scripts/celia-doctor.sh
+  - title: Git & Worktrees
+    color: "#3B82F6"
+    command: git status --short && git worktree list
+
+worktree:
+  sharedDirectories:
+    - .cache
+    - .workspaces

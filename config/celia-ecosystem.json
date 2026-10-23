@@ -1,0 +1,199 @@
+{
+  "brand": {
+    "name": "CELIA",
+    "taglineAr": "منظومة سيليا للأزياء الذكية — مدعومة بتنسيق الوكلاء المتوازي عبر Orca",
+    "taglineEn": "CELIA Smart Fashion Ecosystem — Powered by Orca Multi-Agent Orchestration",
+    "domain": "Fashion Wear, 3D Commerce & Bilingual AI Styling",
+    "owner": "elazamey"
+  },
+  "orca": {
+    "repository": "https://github.com/stablyai/orca.git",
+    "submodulePath": "orca",
+    "pinnedCommit": "816fcee742145eda7bf3623549467c0cc7d80d3c",
+    "license": "MIT",
+    "pluginKey": "elazamey.celia-ops",
+    "pluginPath": "plugins/celia-ops",
+    "recommendedSkills": [
+      "orca-cli",
+      "orchestration",
+      "computer-use",
+      "orca-linear",
+      "orca-per-workspace-env"
+    ]
+  },
+  "services": [
+    {
+      "id": "celia-hub",
+      "nameAr": "مركز قيادة CELIA × Orca",
+      "nameEn": "CELIA × Orca Command Hub",
+      "repo": "https://github.com/elazamey/CELIA.git",
+      "roleAr": "المستودع المركزي لتنسيق الوكلاء، إعدادات Orca، إضافة CELIA Studio، ولوحة المتابعة الحية",
+      "stack": ["Node.js >= 18", "Orca IDE / CLI", "Git Worktrees", "Orca Plugin API v1"],
+      "defaultPort": 4173,
+      "healthPath": "/api/health",
+      "categories": ["orchestration", "control-plane"]
+    },
+    {
+      "id": "celia-storefront",
+      "nameAr": "متجر CELIA للأزياء (Next.js)",
+      "nameEn": "CELIA Fashion Design Storefront",
+      "repo": "https://github.com/elazamey/ELAZAMEY.git",
+      "workspaceDir": ".workspaces/ELAZAMEY",
+      "roleAr": "واجهة المتجر الإلكتروني، أقسام الملابس (أطفال، شباب، بنات، رجالي، نسائي، إكسسوارات)، السلة والدفع",
+      "stack": ["Next.js 14", "TypeScript", "Tailwind CSS", "MongoDB Atlas"],
+      "defaultPort": 3001,
+      "healthPath": "/",
+      "categories": ["storefront", "ecommerce", "frontend"]
+    },
+    {
+      "id": "celia-3d-ai",
+      "nameAr": "العرض ثلاثي الأبعاد ومحرك التوصيات",
+      "nameEn": "CELIA 3D Live & AI Recommender",
+      "repo": "https://github.com/elazamey/celia-fashion-live.git",
+      "workspaceDir": ".workspaces/celia-fashion-live",
+      "roleAr": "معاينة القطع ثلاثية الأبعاد (Three.js)، توصيات المقاسات والتنسيقات بالذكاء الاصطناعي، ولوحة إدارة وSEO",
+      "stack": ["Python", "Flask 3.0", "Three.js", "GSAP", "scikit-learn", "PostgreSQL"],
+      "defaultPort": 5000,
+      "healthPath": "/",
+      "categories": ["3d-viewer", "recommendations", "admin"]
+    },
+    {
+      "id": "celia-assistant",
+      "nameAr": "مساعد سيليا الذكي (Celia Assistant)",
+      "nameEn": "Celia AI Chat & Stylist Backend",
+      "repo": "https://github.com/elazamey/celia.assestent.git",
+      "workspaceDir": ".workspaces/celia.assestent",
+      "roleAr": "مستشار الأزياء وخدمة العملاء الفورية عبر /chat مع التبديل التلقائي بين Groq وGemini ودعم RTL/LTR",
+      "stack": ["Node.js", "Express", "Groq API", "Gemini Fallback", "RTL/LTR UI"],
+      "defaultPort": 3000,
+      "healthPath": "/health",
+      "categories": ["ai-assistant", "customer-care"]
+    },
+    {
+      "id": "celia-dreams",
+      "nameAr": "نواة الوكلاء والمجال (Celia Dreams)",
+      "nameEn": "Celia Dreams Core & Agents",
+      "repo": "https://github.com/elazamey/celia_dreams.git",
+      "workspaceDir": ".workspaces/celia_dreams",
+      "roleAr": "الفصل المعماري الصارم بين منطق المجال (core) وتنسيق الوكلاء (agents) وطبقة الـ API والبيانات مع سجل قرارات ADR",
+      "stack": ["Python 3.11+", "Clean Architecture", "Pytest", "ADR"],
+      "defaultPort": null,
+      "healthPath": null,
+      "categories": ["domain-core", "multi-agent"]
+    },
+    {
+      "id": "nexa-governance",
+      "nameAr": "حوكمة الوكلاء والأدلة (NEXA)",
+      "nameEn": "NEXA Capability & Evidence Protocol",
+      "repo": "https://github.com/elazamey/nexa.git",
+      "workspaceDir": ".workspaces/nexa",
+      "roleAr": "بروتوكول الصلاحيات الموقعة وسلسلة الأدلة الحتمية (الذكاء الاصطناعي يقترح والنظام الحتمي يقرر)",
+      "stack": ["Ed25519", "Capability Tokens", "Deterministic Gate", "Hash-Chained Evidence"],
+      "defaultPort": null,
+      "healthPath": null,
+      "categories": ["security", "governance"]
+    }
+  ],
+  "workflows": [
+    {
+      "id": "seasonal-collection-launch",
+      "titleAr": "إطلاق تشكيلة أزياء موسمية متكاملة (4 وكلاء بالتوازي)",
+      "titleEn": "Seasonal Fashion Collection Launch",
+      "summaryAr": "تقسيم إطلاق مجموعة أزياء جديدة عبر 4 مسارات git worktree متوازية في Orca بدون تعارض في الملفات.",
+      "agents": [
+        {
+          "worktree": "wt/catalog-schema",
+          "agent": "codex",
+          "focusAr": "تجهيز بيانات القطع، المقاسات، الألوان، والأسعار في واجهة الكتالوج وSEO",
+          "promptAr": "أضف مخطط بيانات التشكيلة الموسمية الجديدة مع فلاتر المقاسات والألوان والفئات (رجالي، نسائي، شبابي، أطفال، إكسسوارات) وتأكد من نجاح الاختبارات."
+        },
+        {
+          "worktree": "wt/storefront-3d-ui",
+          "agent": "claude",
+          "focusAr": "تصميم واجهة العرض العربية RTL وتجربة المعاينة البصرية في Design Mode داخل Orca",
+          "promptAr": "طوّر صفحة عرض التشكيلة الموسمية بدعم كامل للعربية RTL وتجاوب الموبايل، وافحص العناصر بصرياً عبر ميزة Design Mode في Orca."
+        },
+        {
+          "worktree": "wt/ai-stylist-prompts",
+          "agent": "claude",
+          "focusAr": "تحديث مساعد Celia الذكي لاقتراح تنسيقات الملابس والمقاسات مع اختبار بديل Groq/Gemini",
+          "promptAr": "حدّث سياق مساعد Celia ليقترح تنسيقات كاملة من التشكيلة الجديدة حسب المناسبة والميزانية، مع التحقق من مسار التبديل التلقائي بين Groq وGemini."
+        },
+        {
+          "worktree": "wt/qa-evidence-gate",
+          "agent": "codex",
+          "focusAr": "بوابة التحقق والاختبارات الشاملة وفحص الأداء وعدم تسرب أي مفاتيح سرية",
+          "promptAr": "شغّل جميع اختبارات الوحدات والتكامل وفحص الملفات الحساسة، وقارن مخرجات الـ worktrees الثلاثة قبل الدمج في main."
+        }
+      ]
+    },
+    {
+      "id": "smart-stylist-upgrade",
+      "titleAr": "تطوير مستشار الأزياء الذكي والربط مع الكتالوج",
+      "titleEn": "AI Personal Stylist & Catalog Bridge",
+      "summaryAr": "ربط محادثة Celia Assistant بمحرك التوصيات وبيانات المتجر الفعلية عبر وكلاء متزامنين.",
+      "agents": [
+        {
+          "worktree": "wt/stylist-api",
+          "agent": "codex",
+          "focusAr": "بناء نقطة ربط موحدة بين /chat وفهرس المنتجات والتوصيات الذكية",
+          "promptAr": "أنشئ موصل استعلام خفيف يربط طلبات المحادثة في Celia Assistant ببيانات المنتجات المتوفرة مع معالجة الأخطاء والمهل الزمنية."
+        },
+        {
+          "worktree": "wt/stylist-rtl-widget",
+          "agent": "claude",
+          "focusAr": "تصميم بطاقات المنتجات المقترحة داخل نافذة المحادثة العربية RTL",
+          "promptAr": "صمّم بطاقات عرض أنيقة للقطع المقترحة داخل نافذة الدردشة مع زر انتقال سريع للسلة ودعم الوضع الليلي والعربية RTL."
+        },
+        {
+          "worktree": "wt/stylist-evals",
+          "agent": "codex",
+          "focusAr": "اختبارات جودة الردود وسلامة التحويل الاحتياطي بين المزودين",
+          "promptAr": "اكتب اختبارات آلية تغطي سيناريوهات الاستشارة بالعربية والإنجليزية وفشل المزود الأساسي للتأكد من استمرارية الخدمة 100%."
+        }
+      ]
+    },
+    {
+      "id": "checkout-conversion-sprint",
+      "titleAr": "تحسين تجربة السلة والدفع وسرعة المتجر",
+      "titleEn": "Cart, Checkout & Performance Sprint",
+      "summaryAr": "مقارنة حلول متعددة لتحسين معدل التحويل وسرعة التحميل على الهواتف عبر خاصية Fan-out في Orca.",
+      "agents": [
+        {
+          "worktree": "wt/checkout-ux",
+          "agent": "claude",
+          "focusAr": "تبسيط خطوات الشحن والدفع على الهاتف المحمول باللغة العربية",
+          "promptAr": "بسّط تدفق إتمام الطلب في المتجر ليتم في خطوات واضحة وسريعة على الهاتف مع رسائل تحقق عربية دقيقة."
+        },
+        {
+          "worktree": "wt/perf-bundle",
+          "agent": "codex",
+          "focusAr": "تحسين تحميل الصور والأصول ثلاثية الأبعاد وتقليل زمن الاستجابة",
+          "promptAr": "حلّل أحجام الأصول والصور وطبق التحميل الكسول (Lazy Loading) وضغط الصور مع الحفاظ على دقة عرض الملابس."
+        }
+      ]
+    }
+  ],
+  "automations": [
+    {
+      "id": "weekday-ecosystem-health",
+      "name": "CELIA Weekday Ecosystem Triage",
+      "trigger": "weekdays",
+      "time": "09:00",
+      "timezone": "Africa/Cairo",
+      "provider": "claude",
+      "precheck": "gh pr list --repo elazamey/CELIA --json number -q '.[0].number'",
+      "prompt": "افحص طلبات الدمج والتذاكر المفتوحة في مستودع CELIA، وشغّل npm test وbash scripts/celia-doctor.sh، ولخّص الأولويات اليومية باللغة العربية."
+    },
+    {
+      "id": "assistant-resilience-audit",
+      "name": "CELIA Assistant & Security Gate",
+      "trigger": "weekly",
+      "time": "10:00",
+      "timezone": "Africa/Cairo",
+      "provider": "codex",
+      "precheck": "node scripts/celia-orchestrator.mjs validate",
+      "prompt": "راجع سلامة إعدادات المساعد الذكي ومتغيرات البيئة والاعتماديات وتأكد من عدم وجود أي مفاتيح مسربة أو ثغرات في الحزم."
+    }
+  ]
+}

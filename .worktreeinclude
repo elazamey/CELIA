@@ -1,0 +1,3 @@
+# Ignored local config files carried automatically into new Orca git worktrees
+.env
+.env.local
