@@ -1,0 +1,23 @@
+scripts:
+  setup: |
+    node scripts/setup.mjs
+  archive: |
+    node --test tests/*.test.mjs
+
+setupAgentStartupPolicy: wait-for-setup
+
+issueCommand: |
+  اقرأ AGENTS.md وREADME.md أولاً. نفّذ المهمة دون خدمات AI مدفوعة، وحافظ على عزل ملفات workspace وحماية .env و.git. شغّل npm run validate قبل اعتماد أي تغيير، ولا تدّعِ نجاح اختبار لم تشغّله.
+
+defaultTabs:
+  - title: NEW1 Agent
+  - title: NEW1 Local UI
+    color: "#B7F36B"
+    command: npm start
+  - title: Validation
+    color: "#8AB4FF"
+    command: npm run validate
+
+worktree:
+  sharedDirectories:
+    - .cache

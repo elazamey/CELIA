@@ -1,0 +1,12 @@
+node_modules/
+.cache/
+.data/
+workspace/
+vendor/orca/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+coverage/
+dist/
